@@ -45,4 +45,14 @@ fun todoTask7() = TODO(
     references = { JavaCode7.Person4("???", -1) }
 )
 
-fun task7(): Boolean = todoTask7()
+fun task7(): Boolean  {
+    val p1 = Person1("", 45)
+    val p12 = Person1("", 45)
+    val p4 = JavaCode7.Person4("", 45)
+    val p3 = Person3("", 45)
+    val p32 = Person3("", 45)
+    p1.hashCode()
+    p3.hashCode()
+    p4.hashCode()
+    return !p1.equals(p12) and p3.equals(p32)
+}

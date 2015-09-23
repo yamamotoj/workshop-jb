@@ -31,7 +31,7 @@ fun objectLiteral() {
 fun runInANewThread(runnable: Runnable) = Thread(runnable).start()
 
 fun todoTask10() = TODO(
-    """
+        """
         Task 10.
         Add an object expression that extends MouseAdapter and counts the number of mouse clicks
         as an argument to the function 'handleMouse()'.
@@ -40,6 +40,11 @@ fun todoTask10() = TODO(
 
 fun task10(handleMouse: (MouseListener) -> Unit): Int {
     var mouseClicks = 0
-    handleMouse(todoTask10())
+    val adapter = object : MouseAdapter() {
+        override fun mouseClicked(e: MouseEvent) {
+            mouseClicks += e.clickCount
+        }
+    }
+    handleMouse(adapter)
     return mouseClicks
 }

@@ -35,4 +35,4 @@ fun todoTask4() = TODO(
     """,
     references = { getPatternInTQString(); month })
 
-fun task4(): String = todoTask4()
+fun task4(): String = month

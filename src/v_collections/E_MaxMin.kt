@@ -7,7 +7,7 @@ fun example4() {
 
 fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? {
     // Return a customer who ordered maximum number of orders
-    return customers.maxBy { it.orders.size }
+    return customers.maxBy { it.orders.size() }
 }
 
 fun Customer.getMostExpensiveOrderedProduct(): Product? {

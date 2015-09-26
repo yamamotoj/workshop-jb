@@ -1,7 +1,7 @@
 package iii_properties
 
-import java.util.Random
 import util.TODO
+import java.util.*
 
 fun localVariables() {
     // immutable variable
@@ -28,7 +28,9 @@ fun usage(sp: SimpleProperty) {
 
 class PropertiesWithCustomAccessors {
     var generatedByDefault: Int = 0
-        set(value: Int) { $generatedByDefault = value }
+        set(value: Int) {
+            $generatedByDefault = value
+        }
         get() = $generatedByDefault
 
     val propertyWithoutBackingField: Int
@@ -40,15 +42,19 @@ class PropertiesWithCustomAccessors {
 
 class PropertyExample() {
     var counter = 0
-    var propertyWithCounter: Int? = todoTask18()
+    var propertyWithCounter: Int? = null
+        set(value : Int?) {
+            counter++
+            $propertyWithCounter = value
+        }
 }
 
 fun todoTask18() = TODO(
-    """
+        """
         Task 18.
         Add custom setter to PropertyExample.propertyWithCounter so that
         it increments the 'counter' property every time 'propertyWithCounter' is assigned to.
         Initialize 'propertyWithCounter' with 'null' ('setter' is NOT invoked on initialization).
     """,
-    references = { PropertyExample() }
+        references = { PropertyExample() }
 )

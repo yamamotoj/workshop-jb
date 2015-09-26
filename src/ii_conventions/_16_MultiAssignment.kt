@@ -1,7 +1,5 @@
 package ii_conventions
 
-import util.TODO
-
 fun multiAssignPair(pair: Pair<Int, String>) {
     val (first, second) = pair
 }
@@ -15,6 +13,7 @@ fun howItWorks() {
     fun invocation() {
         val (i, s) = MyPair()
     }
+
     //invocations of functions 'component1' and 'component2' are generated
     fun generatedCode() {
         val tmp = MyPair()
@@ -54,4 +53,12 @@ fun multiAssignDate(date: MyDate) {
 
 fun todoTask16() = TODO("Again no special task. Just return 'true' if you are interested in Kotlin. =)")
 
-fun task16(): Boolean = todoTask16()
+data class FourBooleans(val b1: Boolean = true,
+                        val b2: Boolean = true,
+                        val b3: Boolean = true,
+                        val b4: Boolean = true)
+
+fun task16(): Boolean {
+    val (b1, b2, b3, b4) = FourBooleans()
+    return b1 && b2 && b3 && b4
+}

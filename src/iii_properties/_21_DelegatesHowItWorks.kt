@@ -1,12 +1,12 @@
 package iii_properties
 
-import kotlin.properties.ReadWriteProperty
-import util.TODO
-import java.util.Calendar
 import ii_conventions.MyDate
+import util.TODO
+import java.util.*
+import kotlin.properties.ReadWriteProperty
 
 fun todoTask21() = TODO(
-    """
+        """
         Task 21.
         A delegate expression must have special 'get' and 'set' methods,
         their signatures you can see below (members of 'ReadWriteProperty' interface).
@@ -15,7 +15,7 @@ fun todoTask21() = TODO(
         Store only time in milliseconds in 'timeInMillis' property.
         Use extension functions 'MyDate.toMillis' and 'Long.ToDate'.
     """,
-    references = { date: MyDate -> date.toMillis().toDate()}
+        references = { date: MyDate -> date.toMillis().toDate() }
 )
 
 class D {
@@ -28,8 +28,16 @@ class D {
 class EffectiveDate<R> : ReadWriteProperty<R, MyDate> {
     var timeInMillis: Long? = null
 
-    override fun get(thisRef: R, desc: PropertyMetadata): MyDate = todoTask21()
-    override fun set(thisRef: R, desc: PropertyMetadata, value: MyDate) = todoTask21()
+    override fun get(thisRef: R, desc: PropertyMetadata): MyDate =
+            if (timeInMillis != null) {
+                timeInMillis!!.toDate()
+            } else {
+                MyDate(0, 0, 0)
+            }
+
+    override fun set(thisRef: R, desc: PropertyMetadata, value: MyDate) {
+        timeInMillis = value.toMillis()
+    }
 }
 
 fun MyDate.toMillis(): Long {
